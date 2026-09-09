@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-[#05050B] text-slate-200 antialiased overflow-x-hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-surface/50 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  }
+  .attentive { color: #10b981; }
+  .partial  { color: #f59e0b; }
+  .distracted { color: #ef4444; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #05050B; }
+::-webkit-scrollbar-thumb { background: #1e1e3f; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2D2E4A; }
+
+/* Scan line animation for camera */
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0.6; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+.scan-line {
+  animation: scanline 2.5s linear infinite;
+}
+
+/* Attention gauge arc */
+@keyframes dashAnim {
+  from { stroke-dashoffset: 565; }
+}
+.gauge-arc {
+  animation: dashAnim 1s ease-out forwards;
+}
+
+/* Animated counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-count { animation: countUp 0.4s ease-out; }
